@@ -7,11 +7,14 @@
 body {
   background-color: #f0f0f0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
 }
-
+#search {
+  margin-bottom: 20px;
+}
 #map { 
   height: 300px;
   width: 250px; 
