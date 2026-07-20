@@ -5,7 +5,6 @@ import './style.css';
 var map = L.map('map').setView([51.505, -0.09], 13);
 
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    zoomLevel: 13,
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
@@ -42,4 +41,28 @@ searchButton.addEventListener('click', () => {
    else {
     alert('Skriv inn et sted du vil søke etter');
   }
+});
+
+async function fetchPlaces(category) {
+  const center = map.getCenter();
+  const url = `https://api.geoapify.com/v2/places?categories=${category}&bias=proximity:${center.lng},${center.lat}&limit=20&apiKey=${apiKey}`;
+
+  const response = await fetch(url);
+  const data = await response.json();
+
+  data.features.forEach((place) => {
+    const [lon, lat] = place.geometry.coordinates;
+    const name = place.properties.name || 'Ukjent sted';
+
+    L.marker([lat, lon]).addTo(map).bindPopup(name);
+  });
+}
+
+    const filterButtons = document.querySelectorAll('#filters button');
+
+filterButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    const category = button.dataset.category;
+    fetchPlaces(category);
+  });
 });

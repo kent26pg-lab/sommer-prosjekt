@@ -8,10 +8,16 @@
   </head>
   <body>
     <div id="search">
-    <input type="text" id="search-input" placeholder="Søk etter et sted..." />
-    <button id="search-button">Søk</button>
+      <input type="text" id="search-input" placeholder="Søk etter et sted..." />
+      <button id="search-button">Søk</button>
     </div>
     <div id="map"></div>
+
+    <div id="filters">
+      <button data-category="catering.cafe">Kafé</button>
+      <button data-category="catering.restaurant">Restaurant</button>
+      <button data-category="accommodation.hotel">Hotell</button>
+    </div>
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>
