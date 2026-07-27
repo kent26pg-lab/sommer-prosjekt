@@ -5,12 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>sommer-prosjekt</title>
+    <script type="module" src="/src/main.js" defer ></script>
   </head>
   <body>
     <div id="search">
       <input type="text" id="search-input" placeholder="Søk etter et sted..." />
       <button id="search-button">Søk</button>
     </div>
+
     <div id="map"></div>
 
     <div id="filters">
@@ -19,6 +21,5 @@
       <button data-category="accommodation.hotel">Hotell</button>
       <button id="clear-button">Fjern pins</button>
     </div>
-    <script type="module" src="/src/main.js"></script>
   </body>
 </html>
