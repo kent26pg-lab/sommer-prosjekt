@@ -18,6 +18,10 @@ L.marker([51.5, -0.09])
 
 const apiKey = import.meta.env.VITE_GEOAPIFY_API_KEY;
 
+if (!apiKey) {
+  alert('API-nøkkel mangler. Sjekk .env-filen din.');
+}
+
 async function searchLocation(query) {
   const url = `https://api.geoapify.com/v1/geocode/search?text=${encodeURIComponent(query)}&apiKey=${apiKey}`;
 
